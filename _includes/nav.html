@@ -9,7 +9,7 @@
     overflow: hidden;
   }
   .mm_expand {
-    height: auto;
+    height: auto !important;
   }
   .mm .mm_head {
     height: 70px;
@@ -45,11 +45,20 @@
   }
   .mm_static {
     position: static !important;
+    transform: none !important;
   }
   
   /* styling */
   .mm {
     text-align: center;
+  }
+  .mm_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background-color: {{ site.header_color }}
   }
   .mm .mm_item_title {
     font-size: 20px;
@@ -61,6 +70,9 @@
   }
 </style>
 <nav class="mm">
+  <div class="mm_bg">
+    &nbsp;
+  </div>
   <div class="mm_container container">
     <div class="mm_head">
       <div class="mm_brand">
@@ -99,15 +111,17 @@
   var $window = $window || $(window);
   
   var toggle_static = function() {
-    if ($mm_body.height() < $mm_item_wrapper.height()) {
-      $mm_item_wrapper.addClass('mm_static');
-    } else {
-      $mm_item_wrapper.removeClass('mm_static');
-    }
+    ($mm_body.height() < $mm_item_wrapper.height()) ? $mm_item_wrapper.addClass('mm_static') : $mm_item_wrapper.removeClass('mm_static');
   };
   
   toggle_static();
   $window.resize(function() {
     toggle_static();
+  });
+  
+  /* hamburger manipulation */
+  var $button = $('.hamburger input');
+  $button.click(function() {
+    $(this).prop('checked')) ? $mm_body.addClass('mm_expand') : $mm_body.removeClass('mm_expand');
   });
 </script>

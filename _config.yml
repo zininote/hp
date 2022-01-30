@@ -6,6 +6,7 @@ desc: "홈페이지 템플릿 연습"
 url: "https://example.com"
 
 base_color: "#333333"
+header_color: "#eeeeee"
 
 menus:
 - title: "About"
