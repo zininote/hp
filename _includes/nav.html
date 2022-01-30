@@ -1,6 +1,10 @@
 <style>
   /* megamenu structure */
   .mm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     max-height: 100vh;
   }
   .mm .mm_head {
@@ -87,11 +91,11 @@
 </nav>
 <script>
   var $mm_body = $('.mm .mm_body');
-  var $mm_item = $('.mm .mm_item');
+  var $mm_item_wrapper = $('.mm .mm_item_wrapper');
   var $window = $window || $(window);
   
   var toggle_static = function() {
-    if ($mm_body.height() < $mm_item.height()) {
+    if ($mm_body.height() < $mm_item_wrapper.height()) {
       $mm_body.addClass('mm_static');
     } else {
       $mm_body.removeClass('mm_static');
