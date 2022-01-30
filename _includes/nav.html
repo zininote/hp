@@ -9,43 +9,33 @@
     overflow: hidden;
   }
   .mm_expand {
-    height: auto !important;
+    height: 100vh !important;
   }
-  .mm .mm_head {
-    height: 70px;
+  .mm_container {
+    display: flex;
+    flex-direction: column;
   }
-  .mm .mm_brand,
-  .mm .mm_button {
-    display: inline-block;
-    height: 100%;
-    position: relative;
+  .mm_head {
+    flex: 0 0 70px;
+    display: flex;
+    justify-content: space-between;
   }
-  .mm .mm_brand {
-    float: left;
+  .mm_brand,
+  .mm_button {
+    flex: 0 0 0;
+    display: flex;
+    align-items: center;
   }
-  .mm .mm_button {
-    float: right;
+  .mm_body {
+    flex: 1 0 1;
+    display: flex;
+    flex-direction: column;
   }
-  .mm .mm_brand > div,
-  .mm .mm_button > div {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+  .mm_item:first-child {
+    margin-top: auto;
   }
-  .mm .mm_body {
-    height: calc(100vh - 70px);
-    position: relative;
-    overflow: auto;
-  }
-  .mm .mm_item_wrapper {
-    position: absolute; /* $('.mm_body').height() < $('.mm_item').height() 일 경우 static */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .mm_static {
-    position: static !important;
-    transform: none !important;
+  .mm_item:last-child {
+    margin-bottom: auto;
   }
   
   /* styling */
@@ -75,6 +65,9 @@
     font-size: 16px;
     font-weight: 300;
   }
+  .mm .mm_item_subs > div {
+    margin: 5px 0;
+  }
 </style>
 <nav class="mm">
   <div class="mm_bg"></div>
@@ -92,40 +85,25 @@
       </div>  
     </div>
     <div class="mm_body">
-      <div class="mm_item_wrapper">
-        {% for menu in site.menus %}
-          <div class="mm_item">
-            <div class="mm_item_title">
-              <div>{{ menu.title }}</div>
-            </div>
-            <div class="mm_item_subs">
-              {% assign to = menu.subs.size | minus: 1 %}
-              {% for i in (0..to) %}
-                  <div><a href="{{ menu.urls[i] | relative_url }}">{{ menu.subs[i] }}</a></div>
-              {% endfor %}
-            </div>
+      {% for menu in site.menus %}
+        <div class="mm_item">
+          <div class="mm_item_title">
+            <div>{{ menu.title }}</div>
           </div>
-        {% endfor %}
-      </div>
+          <div class="mm_item_subs">
+            {% assign to = menu.subs.size | minus: 1 %}
+            {% for i in (0..to) %}
+                <div><a href="{{ menu.urls[i] | relative_url }}">{{ menu.subs[i] }}</a></div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
     </div>
   </div>
 </nav>
 <script>
-  var $mm = $('.mm');
-  var $mm_body = $('.mm .mm_body');
-  var $mm_item_wrapper = $('.mm .mm_item_wrapper');
-  var $window = $window || $(window);
-  
-  var toggle_static = function() {
-    ($mm_body.height() < $mm_item_wrapper.height()) ? $mm_item_wrapper.addClass('mm_static') : $mm_item_wrapper.removeClass('mm_static');
-  };
-  
-  toggle_static();
-  $window.resize(function() {
-    toggle_static();
-  });
-  
   /* hamburger manipulation */
+  var $mm = $('.mm');
   var $button = $('.hamburger input');
   $button.click(function() {
     $(this).prop('checked') ? $mm.addClass('mm_expand') : $mm.removeClass('mm_expand');
