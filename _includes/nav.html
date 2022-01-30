@@ -106,6 +106,7 @@
   </div>
 </nav>
 <script>
+  var $mm = $('.mm');
   var $mm_body = $('.mm .mm_body');
   var $mm_item_wrapper = $('.mm .mm_item_wrapper');
   var $window = $window || $(window);
@@ -122,6 +123,6 @@
   /* hamburger manipulation */
   var $button = $('.hamburger input');
   $button.click(function() {
-    $(this).prop('checked') ? $mm_body.addClass('mm_expand') : $mm_body.removeClass('mm_expand');
+    $(this).prop('checked') ? $mm.addClass('mm_expand') : $mm.removeClass('mm_expand');
   });
 </script>
