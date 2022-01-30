@@ -1,49 +1,52 @@
+---
+---
+
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&display=swap");
 
 html, body, header, nav, main, section, footer, div, p, pre, h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 html, body {
-    font-size: 20px;
-    font-weight: 300;
-    font-family: "Noto Sans KR", sans-serif;
-    color: {{ site.base_color }};
+  font-size: 20px;
+  font-weight: 300;
+  font-family: "Noto Sans KR", sans-serif;
+  color: {{ site.base_color }};
 }
 
 h1, h2, h3, h4, h5, h6, b, strong {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 a, a:link, a:visited, a:hover, a:active {
-    text-decoration: none;
-    color: {{ site.base_color }};
+  text-decoration: none;
+  color: {{ site.base_color }};
 }
 
 img {
-    vertical-align: bottom;
+  vertical-align: bottom;
 }
 
 .container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 @media (min-width: 768px) {
-    .container {
-        width: 750px;
-    }
+  .container {
+    width: 750px;
+  }
 }
 @media (min-width: 992px) {
-    .container {
-        width: 970px;
-    }
+  .container {
+    width: 970px;
+  }
 }
 @media (min-width: 1200px) {
-    .container {
-        width: 1170px;
-    }
+  .container {
+    width: 1170px;
+  }
 }
