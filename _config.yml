@@ -5,7 +5,7 @@ title: "HP Template"
 desc: "홈페이지 템플릿 연습"
 url: "https://example.com"
 
-base_color: "green"
+base_color: "#333333"
 
 menus:
 - "About": ["Our People|#", "Company|#"]
