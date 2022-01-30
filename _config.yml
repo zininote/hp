@@ -7,7 +7,7 @@ url: "https://example.com"
 
 menus:
 - "About": ["Our People", "Company"]
-- "Business": ["Biz 1", "Biz 2", "Biz 3"]
+- "Business": ["Biz 1", "Biz 2", "Biz 3", "Biz 4"]
 - "Brand": ["Brand 1"]
-- "Offices": ["Office", "Factory"]
+- "Location": ["Office", "Factory"]
 - "Contact Us": ["Call Us"]
