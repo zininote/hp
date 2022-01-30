@@ -6,9 +6,20 @@ html, body, header, nav, main, section, footer, div, p, pre, h1, h2, h3, h4, h5,
     padding: 0;
 }
 
+html, body {
+    font-size: 20px;
+    font-weight: 300;
+    font-family: "Noto Sans KR", sans-serif;
+    color: {{ site.base_color }};
+}
+
+h1, h2, h3, h4, h5, h6, b, strong {
+    font-weight: 700;
+}
+
 a, a:link, a:visited, a:hover, a:active {
     text-decoration: none;
-    color: {{ site.base_color }}
+    color: {{ site.base_color }};
 }
 
 img {
