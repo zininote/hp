@@ -17,6 +17,8 @@
         height: 2px;
         background-color: {{ site.base_color }};
         position: absolute;
+        left : 0px;
+        transition: all 0.6s;
     }
     .hamburger .b1 {
         top: 1px;
@@ -27,6 +29,17 @@
     }
     .hamburger .b4 {
         top: 27px;
+    }
+    .hamburger input:checked ~ .b1,
+    .hamburger input:checked ~ .b4 {
+        width: 0px;
+        left: 50%;
+    }
+    .hamburger input:checked ~ .b2 {
+        transform: rotate(45deg);
+    }
+    .hamburger input:checked ~ .b3 {
+        transform: rotate(-45deg);
     }
 </style>
 <div class="hamburger">
