@@ -8,8 +8,8 @@ url: "https://example.com"
 base_color: "green"
 
 menus:
-- "About": ["Our People", "Company"]
-- "Business": ["Biz 1", "Biz 2", "Biz 3", "Biz 4"]
-- "Brand": ["Brand 1"]
-- "Location": ["Office", "Factory"]
-- "Contact Us": ["Call Us"]
+- "About": ["Our People|#", "Company|#"]
+- "Business": ["Biz 1|#", "Biz 2|#", "Biz 3|#", "Biz 4|#"]
+- "Brand": ["Brand 1|#"]
+- "Location": ["Office|#", "Factory|#"]
+- "Contact Us": ["Call Us|#"]
