@@ -62,11 +62,16 @@
     height: 70px;
     background-color: {{ site.header_color }}
   }
+  .mm .mm_item {
+    margin: 20px 0;
+  }
   .mm .mm_item_title {
+    margin: 5px 0;
     font-size: 20px;
     font-weight: 700;
   }
   .mm .mm_item_subs {
+    margin: 5px 0;
     font-size: 16px;
     font-weight: 300;
   }
@@ -93,12 +98,12 @@
             <div class="mm_item_title">
               <div>{{ menu.title }}</div>
             </div>
-            {% assign to = menu.subs.size | minus: 1 %}
-            {% for i in (0..to) %}
-              <div class="mm_item_subs">
-                <div><a href="{{ menu.urls[i] | relative_url }}">{{ menu.subs[i] }}</a></div>
-              </div>
-            {% endfor %}
+            <div class="mm_item_subs">
+              {% assign to = menu.subs.size | minus: 1 %}
+              {% for i in (0..to) %}
+                  <div><a href="{{ menu.urls[i] | relative_url }}">{{ menu.subs[i] }}</a></div>
+              {% endfor %}
+            </div>
           </div>
         {% endfor %}
       </div>
