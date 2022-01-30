@@ -1,3 +1,17 @@
+<style>
+
+    .mm {
+        text-align: center;
+    }
+    .mm .mm_item_title {
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .mm .mm_item_subs {
+        font-size: 16px;
+        font-weight: 300;
+    }
+</style>
 <nav class="mm">
     <div class="mm_container container">
         <div class="mm_brand">
@@ -7,8 +21,14 @@
         <div class="mm_item">
             {% for menu in site.menus %}
                 <div class="mm_item_title">
-                    <div>{{ menu }}</div>
-                </div>   
+                    <div>{{ menu.title }}</div>
+                </div>
+                {% assign to = menu.subs.size | minus: 1 %}
+                {% for i in (0..to) %}
+                    <div class="mm_item_subs">
+                        <div><a href="{{ menu.urls[i] | relative_url }}">{{ menu.subs[i] }}</a></div>
+                    </div>
+                {% endfor %}   
             {% endfor %}
         </div>
     </div>
