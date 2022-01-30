@@ -5,7 +5,11 @@
     top: 0;
     left: 0;
     right: 0;
-    max-height: 100vh;
+    height: 70px;
+    overflow: hidden;
+  }
+  .mm_expand {
+    height: auto;
   }
   .mm .mm_head {
     height: 70px;
@@ -40,7 +44,7 @@
     transform: translate(-50%, -50%);
   }
   .mm_static {
-    position: static;
+    position: static !important;
   }
   
   /* styling */
@@ -96,9 +100,9 @@
   
   var toggle_static = function() {
     if ($mm_body.height() < $mm_item_wrapper.height()) {
-      $mm_body.addClass('mm_static');
+      $mm_item_wrapper.addClass('mm_static');
     } else {
-      $mm_body.removeClass('mm_static');
+      $mm_item_wrapper.removeClass('mm_static');
     }
   };
   
