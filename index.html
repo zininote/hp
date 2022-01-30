@@ -3,11 +3,11 @@ layout: default
 ---
 
 <div class="yaml_test">
-    {% assign size = site.menu.size | minus: 1 %}
+    {% assign size = site.menus.size | minus: 1 %}
     {{ size }}
     {% for i in (0..size) %}
         <p>
-            {{ site.menu[i] }}
+            {{ site.menus[i] }}
         </p>
     {% endfor %}
 </div>
