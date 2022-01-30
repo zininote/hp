@@ -6,23 +6,30 @@
   .mm .mm_head {
     height: 70px;
   }
-  .mm .mm_brand {
+  .mm .mm_brand,
+  .mm .mm_button {
     display: inline-block;
-    float: left;
     height: 100%;
     position: relative;
   }
-  .mm .mm_brand > div {
+  .mm .mm_brand {
+    float: left;
+  }
+  .mm .mm_button {
+    float: right;
+  }
+  .mm .mm_brand > div,
+  .mm .mm_button > div {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
   }
   .mm .mm_body {
-    height: clac(100vh - 70px);
+    height: calc(100vh - 70px);
     position: relative;
     overflow: auto;
   }
-  .mm .mm_item {
+  .mm .mm_item_wrapper {
     position: absolute; /* $('.mm_body').height() < $('.mm_item').height() 일 경우 static */
     top: 50%;
     left: 50%;
@@ -60,19 +67,21 @@
       </div>  
     </div>
     <div class="mm_body">
-      {% for menu in site.menus %}
-        <div class="mm_item">
-          <div class="mm_item_title">
-            <div>{{ menu.title }}</div>
-          </div>
-          {% assign to = menu.subs.size | minus: 1 %}
-          {% for i in (0..to) %}
-            <div class="mm_item_subs">
-              <div><a href="{{ menu.urls[i] | relative_url }}">{{ menu.subs[i] }}</a></div>
+      <div class="mm_item_wrapper">
+        {% for menu in site.menus %}
+          <div class="mm_item">
+            <div class="mm_item_title">
+              <div>{{ menu.title }}</div>
             </div>
-          {% endfor %}
-        </div>
-      {% endfor %}
+            {% assign to = menu.subs.size | minus: 1 %}
+            {% for i in (0..to) %}
+              <div class="mm_item_subs">
+                <div><a href="{{ menu.urls[i] | relative_url }}">{{ menu.subs[i] }}</a></div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </nav>
