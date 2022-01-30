@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+<div class="yaml_test">
+    {% assign size = site.menu.size | minus: 1 %}
+    {{ size }}
+    {% for i in (0..size) %}
+        <p>
+            {{ site.menu[i] }}
+        </p>
+    {% endfor %}
+</div>

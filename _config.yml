@@ -1,0 +1,13 @@
+future: true
+permalink: /post/:title
+
+title: "HP Template"
+desc: "홈페이지 템플릿 연습"
+url: "https://example.com"
+
+menus:
+- "About": ["Our People", "Company"]
+- "Business": ["Biz 1", "Biz 2", "Biz 3"]
+- "Brand": ["Brand 1"]
+- "Offices": ["Office", "Factory"]
+- "Contact Us": ["Call Us"]
