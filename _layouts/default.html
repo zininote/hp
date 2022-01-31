@@ -21,7 +21,16 @@
   </head>
   <body>
     <script>
-      $('body').css('height', window.innerHeight + 'px');
+      var set_body_height = function() {
+        $('body').css('height', $(window).innerHeight() + 'px');
+      };
+      
+      $(document).ready(function() {
+        set_body_height();
+      });
+      $(window).resize(function() {
+        set_body_height();
+      });
     </script>
     <header>
       {% include nav.html %}

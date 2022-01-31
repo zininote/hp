@@ -17,7 +17,7 @@
     z-index: -1;
   }
   .mm_expand {
-    height: calc(100%) !important;
+    height: 100% !important;
   }
   .mm_container {
     display: flex;
@@ -46,6 +46,14 @@
   }
   .mm_item:last-child {
     margin-bottom: auto !important;
+  }
+  
+  /* responsible */
+  @media (min-width: 992px) {
+    .mm_container {
+      flex-direction: row;
+      height: auto;
+    }
   }
   
   /* styling */
@@ -108,9 +116,7 @@
 </nav>
 <script>
   /* hamburger manipulation */
-  var $mm = $('.mm');
-  var $button = $('.hamburger input');
-  $button.click(function() {
-    $(this).prop('checked') ? $mm.addClass('mm_expand') : $mm.removeClass('mm_expand');
+  $('.mm_hamburger input').click(function() {
+    $(this).prop('checked') ? $('.mm').addClass('mm_expand') : $('.mm').removeClass('mm_expand');
   });
 </script>
