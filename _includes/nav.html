@@ -1,86 +1,22 @@
 <style>
   /* megamenu structure */
-  .mm {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 70px;
-    overflow: hidden;
-  }
-  .mm_bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 70px;
-    z-index: -1;
-  }
-  .mm_expand {
-    height: 100% !important;
-  }
-  .mm_container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  .mm_head {
-    flex: 0 0 70px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .mm_brand,
-  .mm_button {
-    flex: 0 0 0;
-    display: flex;
-    align-items: center;
-  }
-  .mm_body {
-    flex: 1 0 0;
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-  }
-  .mm_item:first-child {
-    margin-top: auto !important;
-  }
-  .mm_item:last-child {
-    margin-bottom: auto !important;
-  }
+  .mm {position: fixed; top: 0; left: 0; right: 0; max-height: 70px; height: 100%; overflow: hidden; text-align: center;}
+  .mm_expand_full {max-height: 100% !important;}
   
-  /* responsible */
-  @media (min-width: 992px) {
-    .mm_container {
-      flex-direction: row;
-      height: auto;
-    }
-  }
+  .mm_container {height: 100%; display: flex; flex-direction: column;}
+  .mm_head {flex: 0 0 70px; display: flex: justify-content: space-between; align-item: center;}
+  .mm_body {flex: 1 0 0; display: flex; flex-direction: column;}
+  
+  .mm_item_wrapper {flex: 0 0 0;}
+  .mm_item_wrapper:first-child {margin-top: auto;}
+  .mm_item_wrapper:last-child {margin-bottom: auto;}
   
   /* styling */
-  .mm {
-    text-align: center;
-    border: 1px solid #cccccc;
-    background-color: #ffffff;
-  }
-  .mm_bg {
-    background-color: {{ site.header_color }}
-  }
-  .mm .mm_item {
-    margin: 10px 0;
-  }
-  .mm .mm_item_title {
-    margin: 5px 0;
-    font-size: 20px;
-    font-weight: 700;
-  }
-  .mm .mm_item_subs {
-    margin: 5px 0;
-    font-size: 16px;
-    font-weight: 300;
-  }
-  .mm .mm_item_subs > div {
-    margin: 5px 0;
-  }
+  .mm_item {margin: 10px 0;}
+  .mm_item_title {font-size: 20px; font-weight: 700; margin: 5px 0;}
+  .mm_item_subs > div {font-size: 16px; font-weight: 300; margin: 5px 0;}
+  
+  
 </style>
 <nav class="mm">
   <div class="mm_bg"></div>
@@ -99,15 +35,17 @@
     </div>
     <div class="mm_body">
       {% for menu in site.menus %}
-        <div class="mm_item">
-          <div class="mm_item_title">
-            <div>{{ menu.title }}</div>
-          </div>
-          <div class="mm_item_subs">
-            {% assign to = menu.subs.size | minus: 1 %}
-            {% for i in (0..to) %}
-                <div><a href="{{ menu.urls[i] | relative_url }}">{{ menu.subs[i] }}</a></div>
-            {% endfor %}
+        <div class="mm_item_wrapper">
+          <div class="mm_item">
+            <div class="mm_item_title">
+              <div>{{ menu.title }}</div>
+            </div>
+            <div class="mm_item_subs">
+              {% assign to = menu.subs.size | minus: 1 %}
+              {% for i in (0..to) %}
+                  <div><a href="{{ menu.urls[i] | relative_url }}">{{ menu.subs[i] }}</a></div>
+              {% endfor %}
+            </div>
           </div>
         </div>
       {% endfor %}
@@ -116,7 +54,10 @@
 </nav>
 <script>
   /* hamburger manipulation */
-  $('.mm_hamburger input').click(function() {
-    $(this).prop('checked') ? $('.mm').addClass('mm_expand') : $('.mm').removeClass('mm_expand');
+  $('.mm .hamburger input').click(function() {
+    $(this).prop('checked') ? $('.mm').addClass('mm_expand_full') : $('.mm').removeClass('mm_expand_full');
+  });
+  $(window).resize(function() {
+    if (768 < $(this).width()) $('.mm').removeClass('mm_expand_full');
   });
 </script>
